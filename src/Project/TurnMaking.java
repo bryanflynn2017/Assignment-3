@@ -3,6 +3,7 @@ package Project;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class TurnMaking extends SimulationWindow {
 	static int boost = 0;
@@ -169,6 +170,7 @@ public class TurnMaking extends SimulationWindow {
 		TurnMaking.messageRNG = messageRNG;
 	}
 	
+	
 	// For Assignment2 in SENG210
 	// This class will simulate a coin toss, returning
 	// a string that's either 'heads' or 'tails'.
@@ -180,8 +182,17 @@ public class TurnMaking extends SimulationWindow {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(coinToss());
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("How many tosses?");
+		String inpt = scanner.next();
+		multiToss(Integer.parseInt(inpt));
 		
+	}
+	
+	public static void multiToss(int tosses) {
+		for (int i = 0; i < tosses; i++) {
+			System.out.println(coinToss());
+		}
 	}
 	
 }
