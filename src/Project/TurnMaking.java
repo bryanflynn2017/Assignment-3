@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Color;
 
 public class TurnMaking extends SimulationWindow {
 	static int boost = 0;
@@ -223,6 +224,7 @@ public class TurnMaking extends SimulationWindow {
 		turnMaker.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnNewButton = new JButton("Flip a Coin!");
+		btnNewButton.setBackground(new Color(135, 206, 250));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
