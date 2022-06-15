@@ -169,5 +169,18 @@ public class TurnMaking extends SimulationWindow {
 		TurnMaking.messageRNG = messageRNG;
 	}
 	
+	// For Assignment2 in SENG210
+	// This class will simulate a coin toss, returning
+	// a string that's either 'heads' or 'tails'.
+	public static String coinToss() {
+		List<String> range = Arrays.asList("heads", "tails");
+	    Random random = new Random();
+	    String result = range.get(random.nextInt(range.size()));
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(coinToss());
+	}
 	
 }
