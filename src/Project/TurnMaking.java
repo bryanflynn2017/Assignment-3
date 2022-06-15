@@ -7,10 +7,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class TurnMaking extends SimulationWindow {
 	static int boost = 0;
@@ -184,7 +186,7 @@ public class TurnMaking extends SimulationWindow {
 	// This class will simulate a coin toss, returning
 	// a string that's either 'heads' or 'tails'.
 	public static String coinToss() {
-		List<String> range = Arrays.asList("heads", "tails");
+		List<String> range = Arrays.asList("Heads", "Tails");
 	    Random random = new Random();
 	    String result = range.get(random.nextInt(range.size()));
 		return result;
@@ -195,6 +197,8 @@ public class TurnMaking extends SimulationWindow {
 			System.out.println(coinToss());
 		}
 	}
+	
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -215,15 +219,40 @@ public class TurnMaking extends SimulationWindow {
 	
 	private void initialize() {
 		turnMaker = new JFrame();
-		turnMaker.setBounds(100, 100, 450, 300);
+		turnMaker.setBounds(100, 100, 197, 124);
 		turnMaker.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Flip a Coin!");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		turnMaker.getContentPane().add(btnNewButton, BorderLayout.CENTER);
+		
+		
+		// Button action listener for final commit
+		btnNewButton.addActionListener(new ActionListener( ) {
+			public void actionPerformed(ActionEvent arg0) {
+				btnNewButton.setText(coinToss());
+			}
+		});
+		
+		
+		GroupLayout groupLayout = new GroupLayout(turnMaker.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		turnMaker.getContentPane().setLayout(groupLayout);
 	}
-	
 }
