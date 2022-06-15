@@ -1,9 +1,16 @@
 package Project;
 
+import java.awt.EventQueue;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TurnMaking extends SimulationWindow {
 	static int boost = 0;
@@ -13,6 +20,8 @@ public class TurnMaking extends SimulationWindow {
 	static int messageRNG = 0;
 	static boolean specialAttack = false;
 	static int enemyBoost = 0;
+	
+	private JFrame turnMaker;
 	
 	public static void process(String turnInput) {
 		playerTurn(turnInput);
@@ -181,18 +190,40 @@ public class TurnMaking extends SimulationWindow {
 		return result;
 	}
 	
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("How many tosses?");
-		String inpt = scanner.next();
-		multiToss(Integer.parseInt(inpt));
-		
-	}
-	
 	public static void multiToss(int tosses) {
 		for (int i = 0; i < tosses; i++) {
 			System.out.println(coinToss());
 		}
+	}
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TurnMaking window = new TurnMaking();
+					window.turnMaker.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public TurnMaking() {
+		initialize();
+	}
+	
+	private void initialize() {
+		turnMaker = new JFrame();
+		turnMaker.setBounds(100, 100, 450, 300);
+		turnMaker.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		turnMaker.getContentPane().add(btnNewButton, BorderLayout.CENTER);
 	}
 	
 }
