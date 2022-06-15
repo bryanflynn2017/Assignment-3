@@ -236,6 +236,7 @@ public class TurnMaking extends SimulationWindow {
 		btnNewButton.addActionListener(new ActionListener( ) {
 			public void actionPerformed(ActionEvent arg0) {
 				btnNewButton.setText(coinToss());
+				btnNewButton.setBackground(Color.CYAN);
 			}
 		});
 		
