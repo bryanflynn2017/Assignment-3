@@ -181,6 +181,7 @@ public class TurnMaking extends SimulationWindow {
 	
 	public static void main(String[] args) {
 		System.out.println(coinToss());
+		
 	}
 	
 }
