@@ -235,8 +235,14 @@ public class TurnMaking extends SimulationWindow {
 		// Button action listener for final commit
 		btnNewButton.addActionListener(new ActionListener( ) {
 			public void actionPerformed(ActionEvent arg0) {
-				btnNewButton.setText(coinToss());
-				btnNewButton.setBackground(Color.CYAN);
+				String res = coinToss();
+				btnNewButton.setText(res);
+				if (res == "Heads") {
+					btnNewButton.setBackground(Color.YELLOW);
+				}
+				if (res == "Tails") {
+					btnNewButton.setBackground(Color.ORANGE);
+				}
 			}
 		});
 		
